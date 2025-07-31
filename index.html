@@ -1,0 +1,59 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUMBER GUESSING GAME</title>
+    <link rel="stylesheet" href="styles.css">
+ </head>
+ <body>
+    <div class="game-container">
+        <h1>Welcome to the Number Guessing Game!</h1>
+        <p>Try to guess the number I'm thinking of between 1 and 100.</p>
+        <input type="number" id="input" placeholder="Enter your guess">
+        <div id="button-container">
+            <button id="submitButton">Check</button>
+            <button id="resetButton">Reset</button>
+        </div>
+        <h1 id="output">OUTPUT</h1>
+    </div>
+    <script>
+        let computernum = Math.floor(Math.random() * 100) + 1;
+        console.log(computernum);
+
+        const input = document.querySelector("#input");
+        const submitButton = document.querySelector("#submitButton");
+        const resetButton = document.querySelector("#resetButton");
+        const output = document.querySelector("#output");
+
+        submitButton.addEventListener("click", () => {
+            let userguess = Number(input.value);
+            if (!input.value || userguess < 1 || userguess > 100) {
+                output.textContent = "Please enter a valid number between 1 and 100.";
+                output.style.color = "orange";
+                return;
+            }
+            if (computernum === userguess) {
+                output.textContent = "Congratulations! You guessed the number!";
+                output.style.color = "pink";
+            } else if (userguess < computernum) {
+                output.textContent = "Too low! Try again.";
+                output.style.color = "red";
+            } else {
+                output.textContent = "Too high! Try again.";
+                output.style.color = "blue";
+            }
+            input.value = "";
+        });
+
+        resetButton.addEventListener("click", () => {
+            computernum = Math.floor(Math.random() * 100) + 1;
+            input.value = "";
+            output.textContent = "OUTPUT";
+            output.style.color = "black";
+            console.log(computernum);
+        });
+    </script>
+ </body>
+ 
+ </html>

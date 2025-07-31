@@ -1,0 +1,31 @@
+
+.game-container {
+     background-color: rgb(9, 0, 0);
+    color: rgb(243, 207, 5);
+    padding: 120px 120px 100px 100px;
+    text-align: center;
+    height: 50vh;
+    width: 50%;
+    margin:10px 10px 10px 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(226, 22, 22, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+input {
+     width: 100%;
+    padding: 20px;
+    margin: 10px 10px auto;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow:0 4px 8px rgba(226, 22, 22, 0.2);
+}
+body {
+    background-color: #17b89b;
+    font-family: Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding:60px 30px 30px 30px;
+}
