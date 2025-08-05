@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
  </head>
  <body>
+    <button id="ready">Ready</button>
     <div class="game-container">
         <h1>Welcome to the Number Guessing Game!</h1>
         <p>Try to guess the number I'm thinking of between 1 and 100.</p>
@@ -16,6 +17,7 @@
             <button id="resetButton">Reset</button>
         </div>
         <h1 id="output">OUTPUT</h1>
+        <h1 id="timer">TIMER</h1>
     </div>
     <script>
         let computernum = Math.floor(Math.random() * 100) + 1;
@@ -25,17 +27,44 @@
         const submitButton = document.querySelector("#submitButton");
         const resetButton = document.querySelector("#resetButton");
         const output = document.querySelector("#output");
+        const ready = document.querySelector("#ready");
+        const timer= document.querySelector("#timer");
+
+        input.disabled=true;
+        submitButton.disabled=true;
+        ready.disabled=false;
+        let timeleft = 30;
+        let timerInterval;
+
+
+
+        function StartTimer() {
+            timer.textContent = `Time left: ${timeleft} seconds`;
+            timerInterval = setInterval(() => {
+                timeleft--;
+                timer.textContent = `Time left: ${timeleft} seconds`;
+                if (timeleft === 0) {
+                    clearInterval(timerInterval);
+                    output.textContent = "Time's up! You didn't guess the number.";
+                    output.style.color = "red";
+                    input.disabled = true;
+                    submitButton.disabled = true;
+                }
+            }, 1000);
+        }
 
         submitButton.addEventListener("click", () => {
             let userguess = Number(input.value);
             if (!input.value || userguess < 1 || userguess > 100) {
                 output.textContent = "Please enter a valid number between 1 and 100.";
                 output.style.color = "orange";
-                return;
+                 
             }
-            if (computernum === userguess) {
+           else if (computernum === userguess) {
                 output.textContent = "Congratulations! You guessed the number!";
                 output.style.color = "pink";
+                input.disabled=true;
+                clearInterval(timerInterval);
             } else if (userguess < computernum) {
                 output.textContent = "Too low! Try again.";
                 output.style.color = "red";
@@ -45,11 +74,24 @@
             }
         });
         resetButton.addEventListener("click", () => {
+            document.querySelector(".game-container").style.display = "none";
+            ready.style.display = "block";
             input.value = "";
             output.textContent = "OUTPUT";
             output.style.color = "black";
+            input.disabled = false;
+            ready.disabled = false;
             computernum = Math.floor(Math.random() * 100) + 1;
             console.log(computernum);
+        });
+        ready.addEventListener("click", () => {
+            document.querySelector(".game-container").style.display = "block";
+            ready.style.display = "none";
+            timeleft = 30;
+            StartTimer();
+            input.disabled = false;
+            submitButton.disabled = false;
+            ready.disabled = true;
         });
     </script>
  </body>
