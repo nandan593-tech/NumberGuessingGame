@@ -1,6 +1,6 @@
 
 .game-container {
-     background-color: rgb(9, 0, 0);
+     background-color: rgba(3, 1, 21, 0.815);
     color: rgb(243, 207, 5);
     padding: 120px 120px 100px 100px;
     text-align: center;
@@ -11,6 +11,7 @@
     box-shadow: 0 4px 8px rgba(226, 22, 22, 0.2);
     display: flex;
     flex-direction: column;
+    box-shadow: 0 4px 8px  #17b89b;
 }
 input {
      width: 100%;
@@ -22,10 +23,20 @@ input {
     box-shadow:0 4px 8px rgba(226, 22, 22, 0.2);
 }
 body {
-    background-color: #17b89b;
+    background-color: rgba(3, 1, 21, 0.815);
     font-family: Arial, sans-serif;
     justify-content: center;
     align-items: center;
     display: flex;
     padding:60px 30px 30px 30px;
+}
+button{
+    background-color: #17b89b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(226, 22, 22, 0.2);
 }

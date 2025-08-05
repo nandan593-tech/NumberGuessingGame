@@ -43,14 +43,12 @@
                 output.textContent = "Too high! Try again.";
                 output.style.color = "blue";
             }
-            input.value = "";
         });
-
         resetButton.addEventListener("click", () => {
-            computernum = Math.floor(Math.random() * 100) + 1;
             input.value = "";
             output.textContent = "OUTPUT";
             output.style.color = "black";
+            computernum = Math.floor(Math.random() * 100) + 1;
             console.log(computernum);
         });
     </script>
